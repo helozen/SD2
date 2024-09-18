@@ -1,3 +1,4 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,107 +7,278 @@
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #696969;
-    padding: 20px;
-}
-
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-  }
-
-  /* Navigation menu styling */
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
     margin: 0;
     padding: 0;
-  }
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
 
-  /* Button style for navigation links */
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #555;
+
+
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
     color: white;
-    text-align: center;
-    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+header h1 {
+    display: inline;
+}
+
+header nav {
+    display: inline;
+    float: right;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: rgb(255, 255, 255);
     text-decoration: none;
-    font-size: 16px;
-    border: 2px solid transparent;
-    transition: background-color 0.3s, border-color 0.3s;
-  }
+    font-weight: bold;
+}
 
-  /* Hover effect for buttons */
-  .button:hover {
-    background-color: #777;
-    border-color: #fff;
-  }
+header nav ul li a:hover {
+    text-decoration: underline;
+}
 
-  /* Responsive design for small screens */
-  @media (max-width: 600px) {
-    nav ul {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+/* Hero Section */
+.hero {
+    background: url('images/hero-banner.jpg') no-repeat center center/cover;
+    height: 400px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding-top: 50px;
+}
 
-section {
-    margin: 20px 0;
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.hero form {
+    margin-top: 20px;
+}
+
+.hero input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #218838;
+}
+
+/* Services Section */
+.services {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.services h2 {
+    margin-bottom: 30px;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
     padding: 20px;
-    background-color: white;
+    margin: 10px;
+    text-align: center;
+}
+
+.service-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    margin-bottom: 20px;
+}
+
+.service-card button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.service-card button:hover {
+    background-color: #0056b3;
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 50px;
+    background-color: #fafafa;
+}
+
+.how-it-works h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    text-align: center;
+    width: 30%;
+}
+
+.step img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+}
+
+.step p {
+    margin-top: 10px;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px;
+    background-color: #fff;
+}
+
+.testimonials h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+blockquote {
+    width: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#register {
-    max-width: 600px;
-    margin: 0 auto;
+blockquote p {
+    font-style: italic;
 }
 
-label {
+blockquote cite {
     display: block;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    text-align: right;
 }
 
-input[type="text"], input[type="email"], select, input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* Call to Action */
+.call-to-action {
+    text-align: center;
+    padding: 50px;
+    background-color: #28a745;
+    color: white;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+.call-to-action h2 {
+    margin-bottom: 20px;
+}
+
+.call-to-action button {
+    padding: 15px 30px;
+    background-color: white;
+    color: #28a745;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.call-to-action button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Sign-Up Tabs */
+.signup-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.signup-tabs button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #555;
+.signup-tabs button.active-tab {
+    background-color: #28a745;
+    color: white;
 }
 
+.signup-form.hidden {
+    display: none;
+}
+
+/* Add specific styles for tradesperson form if needed */
+
+/* Footer */
 footer {
     text-align: center;
-    margin-top: 20px;
-    color: #333;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    header nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

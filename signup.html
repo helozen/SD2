@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Local Traders Community</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Local Traders Community</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="signup.html" class="active">Sign Up</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sign-Up Section -->
+    <section class="signup-section">
+        <div class="form-container">
+            <h2>Create Your Account</h2>
+            <p>Sign up to get location-based services or join as a tradesperson on Local Traders Community.</p>
+
+            <!-- Tabs for Customers or Tradespersons -->
+            <div class="signup-tabs">
+                <button id="customer-tab" class="active-tab" onclick="showCustomerForm()">Customer</button>
+                <button id="tradesperson-tab" onclick="showTradespersonForm()">Tradesperson</button>
+            </div>
+
+            <!-- Customer Sign-Up Form -->
+            <form id="customer-form" class="signup-form" onsubmit="validateCustomerForm(event)">
+                <label for="customer-name">Full Name</label>
+                <input type="text" id="customer-name" name="name" placeholder="Your full name" required>
+
+                <label for="customer-email">Email</label>
+                <input type="email" id="customer-email" name="email" placeholder="Your email" required>
+
+                <label for="customer-password">Password</label>
+                <input type="password" id="customer-password" name="password" placeholder="Choose a password" required>
+
+                <label for="customer-confirm-password">Confirm Password</label>
+                <input type="password" id="customer-confirm-password" name="confirm-password" placeholder="Re-enter your password" required>
+
+                <label for="customer-location">Location</label>
+                <input type="text" id="customer-location" name="location" placeholder="Enter your city or postal code" required>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" id="customer-terms" required>
+                    I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a>.
+                </label>
+
+                <button type="submit">Sign Up as Customer</button>
+            </form>
+
+            <!-- Tradesperson Sign-Up Form -->
+            <form id="tradesperson-form" class="signup-form hidden" onsubmit="validateTradespersonForm(event)">
+                <label for="tradesperson-name">Full Name</label>
+                <input type="text" id="tradesperson-name" name="name" placeholder="Your full name" required>
+
+                <label for="tradesperson-email">Email</label>
+                <input type="email" id="tradesperson-email" name="email" placeholder="Your email" required>
+
+                <label for="tradesperson-password">Password</label>
+                <input type="password" id="tradesperson-password" name="password" placeholder="Choose a password" required>
+
+                <label for="tradesperson-confirm-password">Confirm Password</label>
+                <input type="password" id="tradesperson-confirm-password" name="confirm-password" placeholder="Re-enter your password" required>
+
+                <label for="tradesperson-location">Location</label>
+                <input type="text" id="tradesperson-location" name="location" placeholder="Enter your city or postal code" required>
+
+                <!-- Additional Fields for Tradespersons -->
+                <label for="tradesperson-skill">Primary Skill/Trade</label>
+                <input type="text" id="tradesperson-skill" name="skill" placeholder="e.g., Plumber, Electrician" required>
+
+                <label for="tradesperson-document">Upload Verification Document (PDF/JPG)</label>
+                <input type="file" id="tradesperson-document" name="document" accept=".pdf,.jpg,.jpeg,.png" required>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" id="tradesperson-terms" required>
+                    I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a>.
+                </label>
+
+                <button type="submit">Sign Up as Tradesperson</button>
+            </form>
+
+            <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Tabs and Validation -->
+    <script src="js/signup.js"></script>
+</body>
+</html>
+
