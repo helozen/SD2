@@ -13,7 +13,14 @@ body {
     background-color: #f4f4f4;
 }
 
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
 
+a:hover {
+    text-decoration: underline;
+}
 
 
 
@@ -27,8 +34,10 @@ header {
     padding: 10px 20px;
 }
 
-header h1 {
-    display: inline;
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
 header nav {
@@ -37,22 +46,26 @@ header nav {
 }
 
 header nav ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
 }
 
 header nav ul li {
     display: inline;
-    margin-left: 20px;
 }
 
 header nav ul li a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-weight: bold;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
 }
 
+header nav ul li a.active,
 header nav ul li a:hover {
-    text-decoration: underline;
+    background-color: #007BFF;
 }
 
 /* Hero Section */
@@ -270,6 +283,7 @@ blockquote cite {
     display: none;
 }
 
+
 /* Add specific styles for tradesperson form if needed */
 
 /* Footer */
@@ -278,7 +292,7 @@ footer {
     padding: 20px;
     background-color: #333;
     color: white;
-    position: absolute;
+    position: bottom;
     bottom: 0;
     width: 100%;
 }
