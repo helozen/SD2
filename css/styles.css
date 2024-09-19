@@ -26,46 +26,44 @@ a:hover {
 
 /* Header */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
+    background-color: #28a745;
+    padding: 20px;
     color: white;
-    padding: 10px 20px;
+    text-align: center;
 }
-
 
 header .logo h1 {
     margin: 0;
-    font-size: 24px;
-}
-
-header nav {
-    display: inline;
-    float: right;
 }
 
 header nav ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
-    display: flex;
-    gap: 15px;
 }
 
 header nav ul li {
-    display: inline;
+    display: inline-block;
+    margin: 0 10px;
 }
 
 header nav ul li a {
     color: white;
-    padding: 8px 16px;
-    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header nav ul li a.active {
+    text-decoration: underline;
 }
 
 header nav ul li a.active,
 header nav ul li a:hover {
-    background-color: #007BFF;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Hero Section */
@@ -261,11 +259,8 @@ blockquote cite {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
+    background-color: #28a745;
     color: white;
-    position: bottom;
-    bottom: 0;
-    width: 100%;
+    text-align: center;
+    padding: 10px 0;
 }

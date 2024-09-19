@@ -73,3 +73,10 @@ p a {
 p a:hover {
     text-decoration: underline;
 }
+
+footer {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}

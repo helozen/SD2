@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Local Traders Community</title>
+    <link rel="stylesheet" href="css/services.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Local Traders Community</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Find Nearby Services</h2>
+            <p>Search for trusted tradespersons and businesses in your area.</p>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search for services, tradespersons, or location...">
+                <button>Search</button>
+            </div>
+
+            <!-- Service Categories -->
+            <div class="service-categories">
+                <div class="category">
+                    <img src="images/plumber-icon.png" alt="Plumbers">
+                    <h3>Plumbers</h3>
+                    <p>Find professional plumbers near you for installation and repair services.</p>
+                    <a href="plumbers.html" class="btn">View Plumbers</a>
+                </div>
+
+                <div class="category">
+                    <img src="images/electrician-icon.png" alt="Electricians">
+                    <h3>Electricians</h3>
+                    <p>Get help with electrical installations, repairs, and maintenance.</p>
+                    <a href="electricians.html" class="btn">View Electricians</a>
+                </div>
+
+                <div class="category">
+                    <img src="images/tailor-icon.png" alt="Tailors">
+                    <h3>Tailors</h3>
+                    <p>Find experienced tailors for custom clothing or alterations.</p>
+                    <a href="tailors.html" class="btn">View Tailors</a>
+                </div>
+
+                <div class="category">
+                    <img src="images/pharmacy-icon.png" alt="Pharmacies">
+                    <h3>Pharmacies</h3>
+                    <p>Locate nearby pharmacies for your medication and health supplies.</p>
+                    <a href="pharmacies.html" class="btn">View Pharmacies</a>
+                </div>
+
+                <div class="category">
+                    <img src="images/gas-refill-icon.png" alt="Gas Refills">
+                    <h3>Gas Refills</h3>
+                    <p>Order gas cylinder from your nearest store and get home delevery.</p>
+                    <a href="gas.html" class="btn">View Gas Stores</a>
+                </div>
+            </div>
+
+            <!-- Nearby Tradespersons Section -->
+            <div class="nearby-tradespersons">
+                <h2>Available Tradespersons Near You</h2>
+                <!-- This section will dynamically load tradespersons based on the user's location -->
+                <div class="tradesperson">
+                    <h4>John Doe</h4>
+                    <p>Plumber | 4.5 ★ | Available Now</p>
+                    <a href="tradesperson.html" class="btn">View Profile</a>
+                </div>
+
+                <div class="tradesperson">
+                    <h4>Jane Smith</h4>
+                    <p>Electrician | 4.8 ★ | Available in 2 hours</p>
+                    <a href="tradesperson.html" class="btn">View Profile</a>
+                </div>
+
+                <!-- Add more tradespersons dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
+    </footer>
+
+    <!-- Add JavaScript for search and dynamic loading -->
+    <script src="js/services.js"></script>
+</body>
+</html>
