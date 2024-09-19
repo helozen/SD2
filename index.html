@@ -1,135 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Service Booking Platform</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="logo">
-            <h1>Local Traders Community</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="signup.html">Sign Up</a></li>
-            </ul>
-        </nav>
+      <div class="logo">
+        <h1>Local Traders Community</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h2>Find Local Experts for Your Home Services</h2>
-            <p>From plumbing to caregiving, we connect you with trusted professionals in your area.</p>
-            <form id="location-search">
-                <input type="text" placeholder="Enter your location..." id="location" required>
-                <button type="submit">Find Services Near Me</button>
-            </form>
-        </div>
+      <div class="hero-content">
+        <h2>Find Local Experts for Your Home Services</h2>
+        <p>
+          From plumbing to caregiving, we connect you with trusted professionals
+          in your area.
+        </p>
+        <form id="location-search">
+          <input
+            type="text"
+            placeholder="Enter your location..."
+            id="location"
+            required
+          />
+          <button type="submit">Find Services Near Me</button>
+        </form>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-cards">
-            <!-- Plumber -->
-            <div class="service-card">
-                <img src="images/plumber-icon.png" alt="Plumber">
-                <h3>Plumbers</h3>
-                <p>Reliable and professional plumbing services.</p>
-                <button onclick="findService('Plumber')">Find Nearby Plumbers</button>
-            </div>
-            <!-- Electricians -->
-            <div class="service-card">
-                <img src="images/electrician-icon.png" alt="Electricians">
-                <h3>Electricians</h3>
-                <p>Expert electricians to handle all electrical issues.</p>
-                <button onclick="findService('Electrician')">Find Nearby Electricians</button>
-            </div>
-            <!-- Tailors -->
-            <div class="service-card">
-                <img src="images/tailor-icon.png" alt="Tailors">
-                <h3>Tailors</h3>
-                <p>Customized tailoring services at your convenience.</p>
-                <button onclick="findService('Tailor')">Find Nearby Tailors</button>
-            </div>
-            <!-- Pharmecys -->
-            <div class="service-card">
-                <img src="images/pharmacy-icon.png" alt="Pharmacy">
-                <h3>Pharmacys</h3>
-                <p>Professional caregiving services for your loved ones.</p>
-                <button onclick="findService('Pharmacy')">Find Nearby Pharmacys</button>
-            </div>
-            <!-- Gas Refills -->
-            <div class="service-card">
-                <img src="images/gas-refill-icon.png" alt="Gas Refills">
-                <h3>Home Gas (LPGs)</h3>
-                <p>Fast and convenient gas refill services near you.</p>
-                <button onclick="findService('Home Gas (LPGs)')">Find Nearby Gas Cylinder Store</button>
-            </div>
+      <h2>Our Services</h2>
+      <div class="service-cards">
+        <!-- Plumber -->
+        <div class="service-card">
+          <img src="images/plumber-icon.png" alt="Plumber" />
+          <h3>Plumbers</h3>
+          <p>Reliable and professional plumbing services.</p>
+          <button onclick="findService('Plumber')">Find Nearby Plumbers</button>
         </div>
+        <!-- Electricians -->
+        <div class="service-card">
+          <img src="images/electrician-icon.png" alt="Electricians" />
+          <h3>Electricians</h3>
+          <p>Expert electricians to handle all electrical issues.</p>
+          <button onclick="findService('Electrician')">
+            Find Nearby Electricians
+          </button>
+        </div>
+        <!-- Tailors -->
+        <div class="service-card">
+          <img src="images/tailor-icon.png" alt="Tailors" />
+          <h3>Tailors</h3>
+          <p>Customized tailoring services at your convenience.</p>
+          <button onclick="findService('Tailor')">Find Nearby Tailors</button>
+        </div>
+        <!-- Pharmecys -->
+        <div class="service-card">
+          <img src="images/pharmacy-icon.png" alt="Pharmacy" />
+          <h3>Pharmacys</h3>
+          <p>Professional caregiving services for your loved ones.</p>
+          <button onclick="findService('Pharmacy')">
+            Find Nearby Pharmacys
+          </button>
+        </div>
+        <!-- Gas Refills -->
+        <div class="service-card">
+          <img src="images/gas-refill-icon.png" alt="Gas Refills" />
+          <h3>Home Gas (LPGs)</h3>
+          <p>Fast and convenient gas refill services near you.</p>
+          <button onclick="findService('Home Gas (LPGs)')">
+            Find Nearby Gas Cylinder Store
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps">
-            <div class="step">
-                <img src="images/step1-icon.png" alt="Step 1">
-                <h3>Step 1</h3>
-                <p>Enter your location to find nearby professionals.</p>
-            </div>
-            <div class="step">
-                <img src="images/step2-icon.png" alt="Step 2">
-                <h3>Step 2</h3>
-                <p>Choose the service you need and browse profiles.</p>
-            </div>
-            <div class="step">
-                <img src="images/step3-icon.png" alt="Step 3">
-                <h3>Step 3</h3>
-                <p>Book the service and pay securely online.</p>
-            </div>
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <img src="images/step1-icon.png" alt="Step 1" />
+          <h3>Step 1</h3>
+          <p>Enter your location to find nearby professionals.</p>
         </div>
+        <div class="step">
+          <img src="images/step2-icon.png" alt="Step 2" />
+          <h3>Step 2</h3>
+          <p>Choose the service you need and browse profiles.</p>
+        </div>
+        <div class="step">
+          <img src="images/step3-icon.png" alt="Step 3" />
+          <h3>Step 3</h3>
+          <p>Book the service and pay securely online.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
-        <h2>What Our Users Say</h2>
-        <div class="testimonials-container">
-            <blockquote>
-                <p>"I found a plumber within minutes, and he fixed my sink on the same day!"</p>
-                <cite>- Sarah W.</cite>
-            </blockquote>
-            <blockquote>
-                <p>"The electricians on this platform are trustworthy and professional."</p>
-                <cite>- Michael T.</cite>
-            </blockquote>
-            <blockquote>
-                <p>"Such an easy way to find help around the house. Highly recommended!"</p>
-                <cite>- Lisa K.</cite>
-            </blockquote>
-        </div>
+      <h2>What Our Users Say</h2>
+      <div class="testimonials-container">
+        <blockquote>
+          <p>
+            "I found a plumber within minutes, and he fixed my sink on the same
+            day!"
+          </p>
+          <cite>- Sarah W.</cite>
+        </blockquote>
+        <blockquote>
+          <p>
+            "The electricians on this platform are trustworthy and
+            professional."
+          </p>
+          <cite>- Michael T.</cite>
+        </blockquote>
+        <blockquote>
+          <p>
+            "Such an easy way to find help around the house. Highly
+            recommended!"
+          </p>
+          <cite>- Lisa K.</cite>
+        </blockquote>
+      </div>
     </section>
 
     <!-- Call to Action -->
     <section id="register" class="call-to-action">
-        <h2>Ready to Book a Service?</h2>
-        <button onclick="location.href='signup.html';">Sign Up Now</button>
+      <h2>Ready to Book a Service?</h2>
+      <button onclick="location.href='signup.html';">Sign Up Now</button>
     </section>
-    <br>
-
+    <br />
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
+      <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
     </footer>
 
     <script src="js/scripts.js"></script>
-</body>
+  </body>
 </html>
