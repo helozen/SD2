@@ -259,33 +259,6 @@ blockquote cite {
     background-color: #f1f1f1;
 }
 
-/* Sign-Up Tabs */
-.signup-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.signup-tabs button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    cursor: pointer;
-}
-
-.signup-tabs button.active-tab {
-    background-color: #28a745;
-    color: white;
-}
-
-.signup-form.hidden {
-    display: none;
-}
-
-
-/* Add specific styles for tradesperson form if needed */
-
 /* Footer */
 footer {
     text-align: center;

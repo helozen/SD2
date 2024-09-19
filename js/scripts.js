@@ -18,8 +18,3 @@ document.getElementById("location-search").addEventListener("submit", function(e
         alert("Please enter your location.");
     }
 });
-
-// Initialize by showing the customer form by default
-document.addEventListener('DOMContentLoaded', () => {
-    showCustomerForm();
-});
