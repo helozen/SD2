@@ -16,32 +16,70 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="user-profile.html" class="active">Profile</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
                 <li><a href="logout.html">Log Out</a></li>
             </ul>
         </nav>
     </header>
+    <br>
 
-    <!-- User Profile Section -->
-    <section class="user-profile">
+    <!-- Profile Header Section -->
+    <section class="profile">
         <div class="container">
-            <h2>User Profile</h2>
-            <div class="profile-details">
-                <h3>Personal Details</h3>
-                <p><strong>Name:</strong> John Doe</p>
-                <p><strong>Email:</strong> john.doe@example.com</p>
-                <p><strong>Phone:</strong> 123-456-7890</p>
+            <div class="profile-inner">
+                <!-- Profile Picture -->
+                <div class="profile-picture">
+                    <img src="uploads/profile_pictures/default-user.png" alt="Profile Picture">
+                </div>
+                <!-- User Info -->
+                <div class="profile-info">
+                    <h1>John Doe</h1>
+                    <p>Plumber | New York, NY</p>
+                    <p>Member since: January 2023</p>
+                </div>
+                <!-- Call to Action -->
+                <div class="profile-action">
+                    <a href="service.html" class="btn">Book Service</a>
+                </div>
+            </div>
+        </div>
 
-                <h3>Your Bookings</h3>
-                <ul>
-                    <li>Plumbing Service - Completed on 12th Sept 2024</li>
-                    <li>Electrical Service - Scheduled for 22nd Sept 2024</li>
-                </ul>
+    </section>
+        <!-- Profile Content Section -->
+    <section class="profile-content container">
+        <!-- Tabs for About, Services, and Reviews -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('about')">About</button>
+            <button class="tab-btn" onclick="openTab('services')">Services</button>
+            <button class="tab-btn" onclick="openTab('reviews')">Reviews</button>
+        </div>
 
-                <h3>Payment Methods</h3>
-                <p><strong>Primary Card:</strong> **** **** **** 1234</p>
+        <!-- About Section -->
+        <div id="about" class="tab-content active">
+            <h2>About Me</h2>
+            <p>Hi, I’m John Doe, an experienced plumber with over 10 years in the industry. I specialize in residential and commercial plumbing services, including installations, repairs, and emergency services. My goal is to provide reliable and efficient services to my clients.</p>
+        </div>
 
-                <a href="edit-profile.html" class="btn">Edit Profile</a>
+        <!-- Services Section -->
+        <div id="services" class="tab-content">
+            <h2>Services Offered</h2>
+            <ul>
+                <li>Pipe Installation & Repair</li>
+                <li>Water Heater Maintenance</li>
+                <li>Emergency Plumbing Services</li>
+            </ul>
+        </div>
+
+        <!-- Reviews Section -->
+        <div id="reviews" class="tab-content">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <p>"John did an amazing job fixing our plumbing issues. Very professional!" - Jane Doe</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review">
+                <p>"Quick and efficient service. Highly recommend!" - Alex Smith</p>
+                <span>⭐⭐⭐⭐</span>
             </div>
         </div>
     </section>
@@ -50,5 +88,8 @@
     <footer>
         <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="js/profile.js"></script>
 </body>
 </html>

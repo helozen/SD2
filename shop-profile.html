@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Profile - Local Traders Community</title>
+    <title>Store Profile - Local Traders Community</title>
     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
@@ -16,34 +16,75 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="shop-profile.html" class="active">Shop Profile</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
                 <li><a href="logout.html">Log Out</a></li>
             </ul>
         </nav>
     </header>
+    <br>
 
-    <!-- Shop Profile Section -->
-    <section class="shop-profile">
+    <!-- Store Header Section -->
+    <section class="profile">
         <div class="container">
-            <h2>Pharmacy XYZ</h2>
-            <p><strong>Rating:</strong> 4.7 ★</p>
-            <p><strong>Location:</strong> 123 Main St, New York, NY</p>
-            <p><strong>Operating Hours:</strong> Mon-Sat, 9:00 AM - 6:00 PM</p>
+            <div class="profile-inner">
+                <!-- Store Logo -->
+                <div class="profile-picture">
+                    <img src="uploads/store_logos/default-logo.jpg" alt="Store Logo">
+                </div>
+                <!-- Store Info -->
+                <div class="profile-info">
+                    <h1>Pharmacy XYZ</h1>
+                    <p>Pharmacy | New York, NY</p>
+                    <p>Operating Hours: Mon-Sat, 9:00 AM - 6:00 PM</p>
+                </div>
+                <!-- Call to Action -->
+                <div class="profile-action">
+                    <a href="order-products.html" class="btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <h3>Products & Services</h3>
+    <!-- Store Content Section -->
+    <section class="profile-content container">
+        <!-- Tabs for About, Products, and Reviews -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('about')">About</button>
+            <button class="tab-btn" onclick="openTab('products')">Products</button>
+            <button class="tab-btn" onclick="openTab('reviews')">Reviews</button>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="tab-content active">
+            <h2>About Us</h2>
+            <p>Pharmacy XYZ is a family-owned pharmacy located in the heart of New York City. We offer a wide range of prescription medications, over-the-counter drugs, and health products. Our goal is to provide friendly, professional service to our customers.</p>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="tab-content">
+            <h2>Products Offered</h2>
             <ul>
                 <li>Prescription Medications</li>
-                <li>Over-the-Counter Medicines</li>
-                <li>Health and Wellness Products</li>
+                <li>Vitamins & Supplements</li>
+                <li>Personal Care Products</li>
             </ul>
+            <div class="store-images">
+                <img src="uploads/store_images/shop1.jpg" alt="Shop Image 1">
+                <img src="uploads/store_images/shop2.jpg" alt="Shop Image 2">
+            </div>
+        </div>
 
-            <h3>Reviews</h3>
-            <ul>
-                <li>"Friendly staff and quick service." - Alice Green</li>
-                <li>"I found everything I needed." - David Brown</li>
-            </ul>
-
-            <a href="book-service.html" class="btn">Order/Book Service</a>
+        <!-- Reviews Section -->
+        <div id="reviews" class="tab-content">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <p>"Great pharmacy with a wide selection of products. The staff was very helpful!" - Emily Green</p>
+                <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="review">
+                <p>"Fast service and they always have what I need." - Mark Johnson</p>
+                <span>⭐⭐⭐⭐</span>
+            </div>
         </div>
     </section>
 
@@ -51,5 +92,8 @@
     <footer>
         <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="js/profile.js"></script>
 </body>
 </html>

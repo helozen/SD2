@@ -18,16 +18,92 @@ a {
     text-decoration: none;
 }
 
+/* Profile Picture Styling */
+.profile-link {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Space between the profile picture and the logo */
+    margin-bottom: 10px;
+}
+
+.profile-picture {
+    width: 80px; /* Size of the profile picture */
+    height: 80px;
+    border-radius: 50%; /* Makes the picture circular */
+    object-fit: cover; /* Ensures the image fits within the circle without distortion */
+    border: 2px solid white; /* Optional: Add a white border around the image */
+    cursor: pointer; /* Show pointer to indicate it's clickable */
+}
+
+/* Align the profile picture to the left */
+.header-left {
+    top: auto;
+    left: auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Menu Button (Right Side of Header) */
+.menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.menu-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Optional: Adjust menu dropdown for aesthetics */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-dropdown ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.menu-dropdown ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.menu-dropdown ul li:hover {
+    background-color: #f4f4f4;
+}
+
 /* Header */
 header {
     background-color: #28a745;
-    padding: 20px;
+    padding: 35px;
     color: white;
     text-align: center;
 }
 
 header .logo h1 {
-    margin: 0;
+    margin-top: -90px;
 }
 
 header nav ul {
@@ -37,7 +113,7 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 25px;
 }
 
 header nav ul li a {
