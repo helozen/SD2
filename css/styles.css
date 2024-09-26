@@ -190,7 +190,10 @@ header nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    background: url('images/hero-banner.jpg') no-repeat center center/cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: url('images/hero-banner.jpg');
+    background-blend-mode: multiply;
+    background-size: cover;
     height: 400px;
     color: rgb(0, 0, 0);
     text-align: center;
