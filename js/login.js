@@ -1,18 +1,24 @@
-function validateLoginForm() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+function validateLoginForm(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    if (email === "" || password === "") {
-        alert("Please fill out all fields.");
-        return false;
-    }
+  const formData = new FormData(document.getElementById("loginForm"));
 
-    // Simple email validation pattern
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return false;
-    }
-
-    return true;
+  // Send form data to the backend via AJAX (Fetch API)
+  fetch("php/login-process.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // If login is successful, redirect based on user role
+        window.location.href = data.redirect;
+      } else {
+        alert(data.message); // Show error message
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    });
 }

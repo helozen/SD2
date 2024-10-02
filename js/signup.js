@@ -1,52 +1,65 @@
-// Function to show the customer form and hide the tradesperson form
+// Show Customer Form
 function showCustomerForm() {
-    document.getElementById('customer-form').classList.add('active-form');
-    document.getElementById('tradesperson-form').classList.remove('active-form');
-    document.getElementById('customer-tab').classList.add('active-tab');
-    document.getElementById('tradesperson-tab').classList.remove('active-tab');
+  document.getElementById("customer-form").classList.remove("hidden");
+  document.getElementById("tradesperson-form").classList.add("hidden");
+  document.getElementById("customer-tab").classList.add("active-tab");
+  document.getElementById("tradesperson-tab").classList.remove("active-tab");
 }
 
-// Function to show the tradesperson form and hide the customer form
+// Show Tradesperson Form
 function showTradespersonForm() {
-    document.getElementById('tradesperson-form').classList.add('active-form');
-    document.getElementById('customer-form').classList.remove('active-form');
-    document.getElementById('tradesperson-tab').classList.add('active-tab');
-    document.getElementById('customer-tab').classList.remove('active-tab');
+  document.getElementById("tradesperson-form").classList.remove("hidden");
+  document.getElementById("customer-form").classList.add("hidden");
+  document.getElementById("tradesperson-tab").classList.add("active-tab");
+  document.getElementById("customer-tab").classList.remove("active-tab");
 }
 
-// Form validation for customer signup form
+// Handle Customer Form Submission
 function validateCustomerForm(event) {
-    event.preventDefault();
-    
-    const password = document.getElementById('customer-password').value;
-    const confirmPassword = document.getElementById('customer-confirm-password').value;
+  event.preventDefault(); // Prevent default form submission
+  const formData = new FormData(document.getElementById("customer-form"));
 
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
-    }
-    
-    alert('Customer signed up successfully!');
-    // Add logic to send form data to the backend
+  // Send data to PHP backend
+  fetch("register-process.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Customer signed up successfully!");
+        window.location.href = "login.html"; // Redirect to login page
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    });
 }
 
-// Form validation for tradesperson signup form
+// Handle Tradesperson Form Submission
 function validateTradespersonForm(event) {
-    event.preventDefault();
-    
-    const password = document.getElementById('tradesperson-password').value;
-    const confirmPassword = document.getElementById('tradesperson-confirm-password').value;
+  event.preventDefault(); // Prevent default form submission
+  const formData = new FormData(document.getElementById("tradesperson-form"));
 
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
-    }
-    
-    alert('Tradesperson signed up successfully!');
-    // Add logic to send form data to the backend
+  // Send data to PHP backend
+  fetch("php/register-process.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert("Tradesperson signed up successfully!");
+        window.location.href = "login.html"; // Redirect to login page
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    });
 }
-
-// Initialize by showing the customer form by default
-document.addEventListener('DOMContentLoaded', () => {
-    showCustomerForm();
-});
