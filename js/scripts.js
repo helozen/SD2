@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // If not logged in, show Login option
             menuList.innerHTML += `
                 <li><a href="login.html">Log In</a></li>
-                <li><a href="tradesperson-login.html">Tradesperson Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
             `;
         }
     }

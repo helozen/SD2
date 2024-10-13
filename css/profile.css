@@ -72,13 +72,14 @@ header nav ul li a:hover {
 }
 
 .btn {
-    display: inline-block;
+    display: list-item;
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 0px;
+    margin-left: 20px;
 }
 
 footer {

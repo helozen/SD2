@@ -84,8 +84,8 @@ header nav ul li a:hover {
 }
 
 .signup-tabs button {
-    background-color: #007BFF;
-    color: white;
+    background-color: #d8d8d8;
+    color: rgb(0, 0, 0);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -97,9 +97,6 @@ header nav ul li a:hover {
     background-color: #0056b3;
 }
 
-.signup-form {
-    display: none;
-}
 
 .signup-form.active-form {
     display: block;
@@ -130,41 +127,37 @@ header nav ul li a:hover {
     cursor: pointer;
 }
 
-.signup-form button:hover {
-    background-color: #218838;
-}
+
 
 .login-link {
     text-align: center;
     margin-top: 20px;
 }
 
-/* Checkbox */
-.signup-form .checkbox-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 14px; /* Ensure the text size is consistent */
-    flex-wrap: wrap; /* Ensures it wraps on smaller screens */
+.hidden {
+  display: none;
 }
 
-.checkbox-container input[type="checkbox"] {
-    margin: 0; /* Removes default margin of checkbox */
+/* Default tab styles */
+.tab {
+  padding: 10px 20px;
+  background-color: #f1f1f1; /* Light background for inactive tab */
+  border: 1px solid #ccc;    /* Border for inactive tab */
+  cursor: pointer;
+  color: #000;
+  font-weight: normal;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.checkbox-container a {
-    color: #007bff;
-    text-decoration: none;
+/* More specific to ensure it applies */
+#customer-tab.active-tab, #tradesperson-tab.active-tab {
+  background-color: #4CAF50; /* Green background for active tab */
+  color: white;              /* White text for active tab */
+  font-weight: bold;         /* Make the text bold */
+  border-bottom: 2px solid #4CAF50; /* Active tab border */
 }
 
-.checkbox-container label {
-  margin: 0;
-}
 
-.checkbox-container a:hover {
-    text-decoration: underline;
-}
 
 /* Footer */
 footer {
