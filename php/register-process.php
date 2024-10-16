@@ -1,96 +1,68 @@
 <?php
 include('db.php');
 
-if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'message' => 'Database connection failed: ' . $conn->connect_error]));
-}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $location = $_POST['location'];
+    $role = $_POST['role'];
 
-$name = htmlspecialchars(strip_tags($_POST['name']));
-$email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);  // Hash the password
-$location = htmlspecialchars(strip_tags($_POST['location']));
-
-if (empty($name) || empty($email) || empty($password) || empty($location)) {
-    echo json_encode(['success' => false, 'message' => 'All fields are required.']);
-    exit();
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['success' => false, 'message' => 'Invalid email address.']);
-    exit();
-}
-
-// Check if the form is for a tradesperson or customer
-if (isset($_POST['skill'])) {
-    // Tradesperson specific data
-    $role = 'tradesperson';
-    $skill = htmlspecialchars(strip_tags($_POST['skill']));
-
-    // Handle document upload for tradesperson
-    if (isset($_FILES['document'])) {
-        $file_name = $_FILES['document']['name'];
-        $file_tmp = $_FILES['document']['tmp_name'];
-        $upload_dir = 'uploads/documents/';
-        $file_path = $upload_dir . basename($file_name);
-
-        // Check file size and type
-        if ($_FILES['document']['size'] > 1000000) {
-            echo json_encode(['success' => false, 'message' => 'File size too large.']);
-            exit();
-        }
-
-        $allowed_types = ['application/pdf', 'image/jpeg', 'image/png'];
-        if (!in_array($_FILES['document']['type'], $allowed_types)) {
-            echo json_encode(['success' => false, 'message' => 'Unsupported file type.']);
-            exit();
-        }
-
-        // Move uploaded document to uploads directory
-        if (!move_uploaded_file($file_tmp, $file_path)) {
-            echo json_encode(['success' => false, 'message' => 'Document upload failed.']);
-            exit();
-        }
-    } else {
-        echo json_encode(['success' => false, 'message' => 'No document uploaded.']);
-        exit();
+    if ($password !== $confirm_password) {
+        die('Passwords do not match.');
     }
-} else {
-    // Customer specific data
-    $role = 'customer';
-}
 
-// Check if email already exists
-$sql = "SELECT * FROM users WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
-if (!$stmt->execute()) {
-    echo json_encode(['success' => false, 'message' => 'Database query failed: ' . $stmt->error]);
-    exit();
-}
-$result = $stmt->get_result();
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-if ($result->num_rows > 0) {
-    echo json_encode(['success' => false, 'message' => 'Email already exists.']);
-} else {
-    // Insert user into the database
+    // For Tradesperson: Collect additional fields
+    $skill = null;
+    $document = null;
+    if ($role === 'tradesperson') {
+        $skill = $_POST['skill'];
+
+        // Handle file upload
+        if (isset($_FILES['document']) && $_FILES['document']['error'] == 0) {
+            $file_name = $_FILES['document']['name'];
+            $file_tmp = $_FILES['document']['tmp_name'];
+            $upload_dir = 'uploads/documents/';
+            $document = $upload_dir . basename($file_name);
+
+            // Move the uploaded file to the uploads directory
+            if (!move_uploaded_file($file_tmp, $document)) {
+                die('Failed to upload document.');
+            }
+        }
+    }
+
+    // Check if the email already exists
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        die('Email is already registered.');
+    }
+
+    // Insert user data into the database
     if ($role === 'customer') {
-        // Insert customer data
         $sql = "INSERT INTO users (username, email, password, role, location) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $name, $email, $password, $role, $location);
+        $stmt->bind_param("sssss", $name, $email, $hashed_password, $role, $location);
     } else {
-        // Insert tradesperson data
         $sql = "INSERT INTO users (username, email, password, role, location, skill, document) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssss", $name, $email, $password, $role, $location, $skill, $file_path);
+        $stmt->bind_param("sssssss", $name, $email, $hashed_password, $role, $location, $skill, $document);
     }
 
+    // Execute the query and check for success
     if ($stmt->execute()) {
-        echo json_encode(['success' => true, 'message' => ucfirst($role) . ' signed up successfully!']);
+        // Redirect to a success page
+        header("Location: login.html");
+        exit();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to insert user: ' . $stmt->error]);
+        die('Error: ' . $stmt->error);
     }
 }
-
-$stmt->close();
-$conn->close();
