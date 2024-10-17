@@ -25,11 +25,6 @@
     <!-- Sign-Up Section -->
     <section class="signup-section">
       <div class="form-container">
-
-        <!-- Combined Sign-Up Form -->
-        <form action="register-process.php" method="POST"
-        enctype="multipart/form-data">
-
         <h2>Create Your Account</h2>
         <p>
           Sign up to get location-based services or join as a tradesperson on
@@ -41,11 +36,16 @@
           <button
             id="customer-tab"
             class="active-tab"
+            aria-label="Sign up as a customer"
             onclick="showCustomerForm()"
           >
             Customer
           </button>
-          <button id="tradesperson-tab" onclick="showTradespersonForm()">
+          <button
+            id="tradesperson-tab"
+            aria-label="Sign up as a tradesperson"
+            onclick="showTradespersonForm()"
+          >
             Tradesperson
           </button>
         </div>
@@ -56,7 +56,7 @@
           class="signup-form"
           onsubmit="validateCustomerForm(event)"
         >
-          <label for="customer-name">Full Name</label>
+          <label for="customer-name" aria-label="Full Name for Customer">Full Name</label>
           <input
             type="text"
             id="customer-name"
@@ -65,7 +65,7 @@
             required
           />
 
-          <label for="customer-email">Email</label>
+          <label for="customer-email" aria-label="Email for Customer">Email</label>
           <input
             type="email"
             id="customer-email"
@@ -74,16 +74,22 @@
             required
           />
 
-          <label for="customer-password">Password</label>
+          <label for="customer-password" aria-label="Password for Customer"
+            >Password</label
+          >
           <input
             type="password"
             id="customer-password"
             name="password"
             placeholder="Choose a password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}"
+            title="Must contain at least 8 characters, including one uppercase letter, one number, and one special character."
             required
           />
 
-          <label for="customer-confirm-password">Confirm Password</label>
+          <label for="customer-confirm-password" aria-label="Confirm Password for Customer"
+            >Confirm Password</label
+          >
           <input
             type="password"
             id="customer-confirm-password"
@@ -92,7 +98,7 @@
             required
           />
 
-          <label for="customer-location">Location</label>
+          <label for="customer-location" aria-label="Location for Customer">Location</label>
           <input
             type="text"
             id="customer-location"
@@ -116,7 +122,7 @@
           class="signup-form hidden"
           onsubmit="validateTradespersonForm(event)"
         >
-          <label for="tradesperson-name">Full Name</label>
+          <label for="tradesperson-name" aria-label="Full Name for Tradesperson">Full Name</label>
           <input
             type="text"
             id="tradesperson-name"
@@ -125,7 +131,7 @@
             required
           />
 
-          <label for="tradesperson-email">Email</label>
+          <label for="tradesperson-email" aria-label="Email for Tradesperson">Email</label>
           <input
             type="email"
             id="tradesperson-email"
@@ -134,16 +140,22 @@
             required
           />
 
-          <label for="tradesperson-password">Password</label>
+          <label for="tradesperson-password" aria-label="Password for Tradesperson"
+            >Password</label
+          >
           <input
             type="password"
             id="tradesperson-password"
             name="password"
             placeholder="Choose a password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}"
+            title="Must contain at least 8 characters, including one uppercase letter, one number, and one special character."
             required
           />
 
-          <label for="tradesperson-confirm-password">Confirm Password</label>
+          <label for="tradesperson-confirm-password" aria-label="Confirm Password for Tradesperson"
+            >Confirm Password</label
+          >
           <input
             type="password"
             id="tradesperson-confirm-password"
@@ -152,7 +164,7 @@
             required
           />
 
-          <label for="tradesperson-location">Location</label>
+          <label for="tradesperson-location" aria-label="Location for Tradesperson">Location</label>
           <input
             type="text"
             id="tradesperson-location"
@@ -162,7 +174,7 @@
           />
 
           <!-- Additional Fields for Tradespersons -->
-          <label for="tradesperson-skill">Primary Skill/Trade</label>
+          <label for="tradesperson-skill" aria-label="Primary Skill for Tradesperson">Primary Skill/Trade</label>
           <input
             type="text"
             id="tradesperson-skill"
@@ -171,7 +183,7 @@
             required
           />
 
-          <label for="tradesperson-document"
+          <label for="tradesperson-document" aria-label="Verification Document for Tradesperson"
             >Upload Verification Document (PDF/JPG)</label
           >
           <input
@@ -185,14 +197,14 @@
           <label class="checkbox-container">
             <input type="checkbox" id="tradesperson-terms" required />
             I agree to the
-            <a href="terms.html" target="_blank" >Terms and Conditions</a>.
+            <a href="terms.html" target="_blank">Terms and Conditions</a>.
           </label>
 
           <button type="submit">Sign Up as Tradesperson</button>
         </form>
 
         <p class="login-link">
-          Already have an account?  <a href="login.html">Log In</a>
+          Already have an account? <a href="login.html">Log In</a>
         </p>
       </div>
     </section>
@@ -202,7 +214,6 @@
       <p>&copy; 2024 Local Traders Community. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Tabs and Validation -->
     <script src="js/signup.js"></script>
   </body>
 </html>
