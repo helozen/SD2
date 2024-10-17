@@ -1,4 +1,4 @@
-/* Global Styles */ 
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -25,6 +25,7 @@ header {
 
 header .logo h1 {
     margin: 0;
+    font-size: 24px;
 }
 
 header nav ul {
@@ -48,9 +49,8 @@ header nav ul li a:hover {
     padding: 10px 20px;
     background-color: #ffffff;
     color: black;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Sign-Up Section */
@@ -61,54 +61,47 @@ header nav ul li a:hover {
     padding: 30px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .signup-section h2 {
     text-align: center;
     color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .signup-section p {
     text-align: center;
     color: #666;
-}
-
-.form-container {
-    margin-top: 20px;
-}
-
-.signup-tabs {
-    display: flex;
-    justify-content: space-around;
     margin-bottom: 20px;
 }
 
-.signup-tabs button {
-    background-color: #d8d8d8;
-    color: rgb(0, 0, 0);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+.form-container {
+    width: 100%;
 }
 
-.signup-tabs button.active-tab {
-    background-color: #0056b3;
-}
-
-
-.signup-form.active-form {
-    display: block;
+.signup-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .signup-form label {
     display: block;
-    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
 }
 
-.signup-form input {
-    width: 100%;
+/* Make inputs 48% wide to sit side by side */
+.signup-form input,
+.signup-form select,
+.signup-form button {
+    width: 48%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -116,6 +109,16 @@ header nav ul li a:hover {
     box-sizing: border-box;
 }
 
+.signup-form input.full-width {
+    width: 100%;
+}
+
+/* File input styles */
+.signup-form input[type="file"] {
+    padding: 3px;
+}
+
+/* Button styles */
 .signup-form button {
     width: 100%;
     padding: 12px;
@@ -125,39 +128,46 @@ header nav ul li a:hover {
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+.signup-form button:hover {
+    background-color: #218838;
+}
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+}
 
 .login-link {
     text-align: center;
     margin-top: 20px;
+    font-size: 14px;
 }
 
-.hidden {
-  display: none;
+/* Tradesperson Fields */
+.tradesperson-fields {
+    display: none;
 }
 
-/* Default tab styles */
-.tab {
-  padding: 10px 20px;
-  background-color: #f1f1f1; /* Light background for inactive tab */
-  border: 1px solid #ccc;    /* Border for inactive tab */
-  cursor: pointer;
-  color: #000;
-  font-weight: normal;
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Show tradesperson fields when the "Tradesperson" radio is checked */
+input[type="radio"][value="tradesperson"]:checked ~ .tradesperson-fields {
+    display: block;
 }
 
-/* More specific to ensure it applies */
-#customer-tab.active-tab, #tradesperson-tab.active-tab {
-  background-color: #4CAF50; /* Green background for active tab */
-  color: white;              /* White text for active tab */
-  font-weight: bold;         /* Make the text bold */
-  border-bottom: 2px solid #4CAF50; /* Active tab border */
+/* Align radio buttons properly */
+.user-type-options {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
 }
-
-
 
 /* Footer */
 footer {
@@ -165,4 +175,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
