@@ -19,7 +19,7 @@ function validateCustomerForm(event) {
     };
 
     // Send form data to backend
-    sendDataToBackend("signup.php", formData);
+    sendDataToBackend("php/signup.php", formData);
   }
 }
 
@@ -48,7 +48,7 @@ function validateTradespersonForm(event) {
     };
 
     // Send form data to backend with file upload
-    sendDataToBackend("signup.php", formData, true);
+    sendDataToBackend("php/signup.php", formData, true);
   }
 }
 

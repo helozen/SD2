@@ -273,7 +273,7 @@ header nav ul li a:hover {
 }
 
 .service-card button {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -282,7 +282,7 @@ header nav ul li a:hover {
 }
 
 .service-card button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 /* How It Works Section */

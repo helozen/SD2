@@ -55,3 +55,33 @@ document.addEventListener("DOMContentLoaded", function() {
     // Render the menu options on page load
     renderMenu();
 });
+
+document
+  .getElementById("location-search")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form from submitting in the traditional way
+    const location = document.getElementById("location").value;
+
+    if (location) {
+      const service = "services"; // You can change this dynamically if needed
+      const googleMapsURL = `https://www.google.com/maps/search/${service}+near+${encodeURIComponent(
+        location
+      )}`;
+      window.open(googleMapsURL, "_blank"); // Open in a new tab
+    } else {
+      alert("Please enter a location.");
+    }
+  });
+
+function findService(serviceType) {
+  const location = document.getElementById("location").value;
+
+  if (location) {
+    const googleMapsURL = `https://www.google.com/maps/search/${serviceType}+near+${encodeURIComponent(
+      location
+    )}`;
+    window.open(googleMapsURL, "_blank"); // Open in a new tab
+  } else {
+    alert("Please enter your location in the search box.");
+  }
+}
