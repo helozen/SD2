@@ -1,28 +1,44 @@
-// JavaScript for handling dynamic loading and filtering of tradespersons based on user location
+document.addEventListener("DOMContentLoaded", function () {
+  // Get user's current location (or use a default)
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        loadTradespersons(position.coords.latitude, position.coords.longitude);
+      },
+      function () {
+        // If location access is denied, use default coordinates
+        loadTradespersons(40.712776, -74.005974); // Default location (New York City)
+      }
+    );
+  } else {
+    // If geolocation is not available, use default location
+    loadTradespersons(40.712776, -74.005974);
+  }
+});
 
-// Placeholder for dynamic tradesperson data
-const tradespersons = [
-    { name: "John Doe", trade: "Plumber", rating: 4.5, available: "Now" },
-    { name: "Jane Smith", trade: "Electrician", rating: 4.8, available: "2 hours" },
-    // Add more tradespersons dynamically here
-];
+function loadTradespersons(lat, lng) {
+  const apiUrl = `/api/nearby-tradespersons.php?lat=${lat}&lng=${lng}&radius=10`;
 
-// Dynamically load tradespersons based on the user's location (mocked for now)
-function loadTradespersons() {
-    const container = document.querySelector(".nearby-tradespersons");
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const container = document.querySelector(".nearby-tradespersons");
+      container.innerHTML = ""; // Clear existing data
 
-    tradespersons.forEach(person => {
-        const div = document.createElement("div");
-        div.classList.add("tradesperson");
+      if (data.length === 0) {
+        container.innerHTML = "<p>No tradespersons found near you.</p>";
+      }
 
-        div.innerHTML = `
-            <h4>${person.name}</h4>
-            <p>${person.trade} | ${person.rating} ★ | Available ${person.available}</p>
-            <a href="tradesperson.html" class="btn">View Profile</a>
-        `;
-        container.appendChild(div);
-    });
+      data.forEach((tradesperson) => {
+        const tradespersonDiv = `
+                    <div class="tradesperson">
+                        <h4>${tradesperson.name}</h4>
+                        <p>${tradesperson.service_type} | ${tradesperson.rating} ★ | Available ${tradesperson.availability}</p>
+                        <a href="tradesperson.html?id=${tradesperson.id}" class="btn">View Profile</a>
+                    </div>
+                `;
+        container.innerHTML += tradespersonDiv;
+      });
+    })
+    .catch((error) => console.error("Error fetching tradespersons:", error));
 }
-
-// Initialize the page by loading tradespersons
-document.addEventListener("DOMContentLoaded", loadTradespersons);
