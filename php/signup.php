@@ -80,12 +80,3 @@ echo json_encode($response);
 // Close connection
 $conn->close();
 
-// After inserting user data
-$verification_token = bin2hex(random_bytes(16)); // Generate a random token
-$sql = "UPDATE customers SET verification_token='$verification_token' WHERE email='$email'";
-
-if ($conn->query($sql) === TRUE) {
-    // Send verification email
-    $verification_link = "http://yourdomain.com/verify.php?token=$verification_token";
-    mail($email, "Verify your email", "Click here to verify your email: $verification_link");
-}
