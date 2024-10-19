@@ -1,3 +1,57 @@
+// Customer form validation and submission
+function validateCustomerForm(event) {
+  event.preventDefault();
+  const password = document.getElementById("customer-password").value;
+  const confirmPassword = document.getElementById(
+    "customer-confirm-password"
+  ).value;
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+  } else {
+    // Collect form data
+    const customerFormData = {
+      name: document.getElementById("customer-name").value,
+      email: document.getElementById("customer-email").value,
+      password: password,
+      location: document.getElementById("customer-location").value,
+      termsAccepted: document.getElementById("customer-terms").checked ? 1 : 0,
+    };
+
+    // Send form data to backend
+    sendDataToBackend("php/signup.php", customerFormData, false);
+  }
+}
+
+// Tradesperson form validation and submission
+function validateTradespersonForm(event) {
+  event.preventDefault();
+  const password = document.getElementById("tradesperson-password").value;
+  const confirmPassword = document.getElementById(
+    "tradesperson-confirm-password"
+  ).value;
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+  } else {
+    // Collect form data
+    const tradespersonFormData = {
+      name: document.getElementById("tradesperson-name").value,
+      email: document.getElementById("tradesperson-email").value,
+      password: password,
+      location: document.getElementById("tradesperson-location").value,
+      skill: document.getElementById("tradesperson-skill").value,
+      termsAccepted: document.getElementById("tradesperson-terms").checked
+        ? 1
+        : 0,
+      document: document.getElementById("tradesperson-document").files[0],
+    };
+
+    // Send form data to backend with file upload
+    sendDataToBackend("php/signup.php", tradespersonFormData, true);
+  }
+}
+
 // Function to send data to the PHP backend
 function sendDataToBackend(url, formData, isTradesperson = false) {
   if (isTradesperson) {
@@ -64,4 +118,19 @@ function sendDataToBackend(url, formData, isTradesperson = false) {
       });
   }
 }
-console.log("Sending data:", formData);
+
+// Show customer form
+function showCustomerForm() {
+  document.getElementById("customer-form").classList.remove("hidden");
+  document.getElementById("tradesperson-form").classList.add("hidden");
+  document.getElementById("customer-tab").classList.add("active-tab");
+  document.getElementById("tradesperson-tab").classList.remove("active-tab");
+}
+
+// Show tradesperson form
+function showTradespersonForm() {
+  document.getElementById("customer-form").classList.add("hidden");
+  document.getElementById("tradesperson-form").classList.remove("hidden");
+  document.getElementById("customer-tab").classList.remove("active-tab");
+  document.getElementById("tradesperson-tab").classList.add("active-tab");
+}
