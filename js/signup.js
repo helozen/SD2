@@ -1,55 +1,100 @@
 // Customer form validation and submission
 function validateCustomerForm(event) {
   event.preventDefault();
+
+  // Get form values
   const password = document.getElementById("customer-password").value;
   const confirmPassword = document.getElementById(
     "customer-confirm-password"
   ).value;
+  const termsAccepted = document.getElementById("customer-terms").checked;
 
+  // Validate passwords match
   if (password !== confirmPassword) {
     alert("Passwords do not match!");
-  } else {
-    // Collect form data
-    const formData = {
-      name: document.getElementById("customer-name").value,
-      email: document.getElementById("customer-email").value,
-      password: password,
-      location: document.getElementById("customer-location").value,
-      termsAccepted: document.getElementById("customer-terms").checked ? 1 : 0,
-    };
-
-    // Send form data to backend
-    sendDataToBackend("php/signup.php", formData);
+    return;
   }
+
+  // Validate terms and conditions
+  if (!termsAccepted) {
+    alert("Please accept the Terms and Conditions.");
+    return;
+  }
+
+  // Collect form data
+  const formData = {
+    name: document.getElementById("customer-name").value,
+    email: document.getElementById("customer-email").value,
+    password: password,
+    location: document.getElementById("customer-location").value,
+    termsAccepted: termsAccepted ? 1 : 0,
+  };
+
+  // Validate email and other fields
+  if (!validateEmail(formData.email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // Send form data to backend
+  sendDataToBackend("php/signup.php", formData);
 }
 
 // Tradesperson form validation and submission
 function validateTradespersonForm(event) {
   event.preventDefault();
+
+  // Get form values
   const password = document.getElementById("tradesperson-password").value;
   const confirmPassword = document.getElementById(
     "tradesperson-confirm-password"
   ).value;
+  const termsAccepted = document.getElementById("tradesperson-terms").checked;
+  const fileInput = document.getElementById("tradesperson-document");
 
+  // Validate passwords match
   if (password !== confirmPassword) {
     alert("Passwords do not match!");
-  } else {
-    // Collect form data
-    const formData = {
-      name: document.getElementById("tradesperson-name").value,
-      email: document.getElementById("tradesperson-email").value,
-      password: password,
-      location: document.getElementById("tradesperson-location").value,
-      skill: document.getElementById("tradesperson-skill").value,
-      termsAccepted: document.getElementById("tradesperson-terms").checked
-        ? 1
-        : 0,
-      document: document.getElementById("tradesperson-document").files[0],
-    };
-
-    // Send form data to backend with file upload
-    sendDataToBackend("php/signup.php", formData, true);
+    return;
   }
+
+  // Validate terms and conditions
+  if (!termsAccepted) {
+    alert("Please accept the Terms and Conditions.");
+    return;
+  }
+
+  // Validate file upload
+  if (fileInput.files.length === 0) {
+    alert("Please upload a verification document.");
+    return;
+  }
+
+  // Collect form data
+  const formData = {
+    name: document.getElementById("tradesperson-name").value,
+    email: document.getElementById("tradesperson-email").value,
+    password: password,
+    location: document.getElementById("tradesperson-location").value,
+    skill: document.getElementById("tradesperson-skill").value,
+    termsAccepted: termsAccepted ? 1 : 0,
+    document: fileInput.files[0], // Include the file
+  };
+
+  // Validate email and other fields
+  if (!validateEmail(formData.email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // Send form data to backend with file upload
+  sendDataToBackend("php/signup.php", formData, true);
+}
+
+// Helper function to validate email
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
 }
 
 // Function to send data to the PHP backend
@@ -60,7 +105,6 @@ function sendDataToBackend(url, formData, isTradesperson = false) {
     for (const key in formData) {
       formDataObj.append(key, formData[key]);
     }
-
     formDataObj.append("type", "tradesperson");
 
     // Send form data via POST request (for tradesperson)
@@ -68,12 +112,14 @@ function sendDataToBackend(url, formData, isTradesperson = false) {
       method: "POST",
       body: formDataObj,
     })
-      .then((response) => response.json())
+      .then((response) =>
+        response.json().catch(() => ({ error: "Invalid response from server" }))
+      )
       .then((data) => {
         if (data.message) {
           alert(data.message);
         } else {
-          alert(data.error);
+          alert(data.error || "Signup failed, please try again.");
         }
       })
       .catch((error) => {
@@ -94,12 +140,14 @@ function sendDataToBackend(url, formData, isTradesperson = false) {
       },
       body: new URLSearchParams(customerData),
     })
-      .then((response) => response.json())
+      .then((response) =>
+        response.json().catch(() => ({ error: "Invalid response from server" }))
+      )
       .then((data) => {
         if (data.message) {
           alert(data.message);
         } else {
-          alert(data.error);
+          alert(data.error || "Signup failed, please try again.");
         }
       })
       .catch((error) => {

@@ -1,4 +1,8 @@
 <?php
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Database connection setup
 $servername = "localhost";
 $username = "root"; // Default XAMPP username
@@ -14,9 +18,12 @@ if ($conn->connect_error) {
 }
 
 // Function to securely hash passwords
-function hashPassword($password) {
+function hashPassword($password)
+{
     return password_hash($password, PASSWORD_BCRYPT);
 }
+
+$response = []; // Prepare an empty response array
 
 // Handle customer signup
 if ($_POST['type'] === 'customer') {
@@ -31,9 +38,9 @@ if ($_POST['type'] === 'customer') {
             VALUES ('$full_name', '$email', '$password', '$location', '$terms_accepted')";
 
     if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Customer signup successful!"]);
+        $response["message"] = "Customer signup successful!";
     } else {
-        echo json_encode(["error" => "Error: " . $sql . "<br>" . $conn->error]);
+        $response["error"] = "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
@@ -49,19 +56,26 @@ if ($_POST['type'] === 'tradesperson') {
     // Handle file upload
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["document"]["name"]);
-    move_uploaded_file($_FILES["document"]["tmp_name"], $target_file);
 
-    // Insert into tradespersons table
-    $sql = "INSERT INTO tradespersons (full_name, email, password, location, skill, document_path, terms_accepted)
-            VALUES ('$full_name', '$email', '$password', '$location', '$skill', '$target_file', '$terms_accepted')";
+    // Move the uploaded file
+    if (move_uploaded_file($_FILES["document"]["tmp_name"], $target_file)) {
+        // Insert into tradespersons table
+        $sql = "INSERT INTO tradespersons (full_name, email, password, location, skill, document_path, terms_accepted)
+                VALUES ('$full_name', '$email', '$password', '$location', '$skill', '$target_file', '$terms_accepted')";
 
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Tradesperson signup successful!"]);
+        if ($conn->query($sql) === TRUE) {
+            $response["message"] = "Tradesperson signup successful!";
+        } else {
+            $response["error"] = "Error: " . $sql . "<br>" . $conn->error;
+        }
     } else {
-        echo json_encode(["error" => "Error: " . $sql . "<br>" . $conn->error]);
+        $response["error"] = "File upload failed.";
     }
 }
 
+// Return JSON response
+header('Content-Type: application/json');
+echo json_encode($response);
+
 // Close connection
 $conn->close();
-?>
