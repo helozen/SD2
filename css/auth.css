@@ -187,7 +187,7 @@ main {
 h2 {
     text-align: center;
     font-size: 2rem;
-    color: #343a40;
+    color: #007bff;
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
@@ -295,7 +295,7 @@ button:hover {
 /* Footer */
 footer {
     height: 10vh; /* Adjust for footer height */
-    background-color: #343a40;
+    background-color: #007bff;
     color: #fff;
     display: flex;
     flex-shrink: 0;

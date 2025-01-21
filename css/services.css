@@ -35,12 +35,9 @@ header nav ul li a {
 
 header nav ul li a.active,
 header nav ul li a:hover {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
 }
 
 .container {
